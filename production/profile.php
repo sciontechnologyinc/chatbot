@@ -497,30 +497,29 @@ include 'include/db.php';
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- morris.js -->
-    <script src="../vendors/raphael/raphael.min.js"></script>
-    <script src="../vendors/morris.js/morris.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+   <?php include('partial/footer.php') ?>
 
-    <script>
-        $(document).ready(function(){
-            
-        })
+   <script>
+    // Codes for Jquery
+      $(document).ready(function(){
+            // Codes for Ajax
+                $.ajax({
+                  type: "POST",
+                  url: "query/addDoctor.php?a=add",
+                  data: {
+                    fullname:$('#name').val(),
+                    email:$('#email').val(),
+                    address:$('#email2').val(),
+                    number:$('#number').val(),
+                    telephone:$('#telephone').val(),
+                    school:$('#school').val(),
+                    specialties:$('#specialties').val()
+                    },
+                    success:  function(data){
+                      location.reload();
+                  }
+          });
+      });
     </script>
   </body>
 </html>
