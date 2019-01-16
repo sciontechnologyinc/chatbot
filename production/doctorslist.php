@@ -426,7 +426,7 @@ include'include/db.php';
             // Codes for Ajax
                 $.ajax({
                   type: "POST",
-                  url: "query/addDoctor.php",
+                  url: "query/addDoctor.php?a=add",
                   data: {
                     fullname:$('#name').val(),
                     email:$('#email').val(),
@@ -437,7 +437,7 @@ include'include/db.php';
                     specialties:$('#specialties').val()
                     },
                     success:  function(data){
-                      alert('jetro');
+                      location.reload();
                   }
               });
           });

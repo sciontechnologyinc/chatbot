@@ -1,7 +1,6 @@
 <?php
 include('../include/db.php');
 
-
  $name = $_POST['fullname'];
  $email = $_POST['email'];
  $address = $_POST['address'];
@@ -10,9 +9,13 @@ include('../include/db.php');
  $school = $_POST['school'];
  $specialties = $_POST['specialties'];
 
+ if($_GET['a']=='add'){
+
  $sql = "INSERT INTO d_info(d_fullname, d_email, d_address, d_number, d_telephone, d_school, d_specialt)
  VALUES ('$name', '$email','$address','$number','$telephone','$school','$specialties')";
 
  mysqli_query($conn, $sql);
-
+    }else{
+        echo 'NO !!!';
+    }
 ?>

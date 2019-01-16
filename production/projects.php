@@ -271,15 +271,17 @@ include'include/db.php';
                       </thead>
                       <tbody>
                         <?php 
+
                         $sql = "SELECT * FROM users";
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result)>0) 
                         {
+                        $var = 1;
                        while ($row = mysqli_fetch_assoc($result)) {
-                   
+
                         ?>
                         <tr>
-                          <td><?=$row['user_id']?></td>
+                          <td><?= $var++ ?></td>
                           <td><?=$row['user_firstn']?></td>
                           <td><?=$row['user_lastn']?></td>
                           <td><?=$row['user_name']?></td>
