@@ -118,8 +118,6 @@ include'include/db.php';
     } else {
         echo 'No post yet';
     }
-
-          
          ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
@@ -271,14 +269,14 @@ include'include/db.php';
   <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school"> School graduated at <span class="required">*</span>
   </label>
   <div class="col-md-6 col-sm-6 col-xs-12">
-    <input id="" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
+    <input id="school" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
   </div>
 </div>
 <div class="item form-group">
   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Specialties <span class="required">*</span>
   </label>
   <div class="col-md-6 col-sm-6 col-xs-12">
-    <select id="textarea" required="required" name="specialties" class="form-control col-md-7 col-xs-12">
+    <select required="required" name="specialties" id="specialties" class="form-control col-md-7 col-xs-12">
       <option></option>
       <option>ALLERGY & IMMUNOLOGY</option>
       <option>ANESTHESIOLOGY</option>
@@ -298,14 +296,9 @@ include'include/db.php';
    
 
     <div class="ln_solid"></div>
-
-      <div class="modal-footer">
-  
-                     
+      <div class="modal-footer" style="display:inline-flex !important;float:right !important">
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button><br> <br>
-        <button type="button" class="btn btn-primary" name="dbtn_success">Save changes</button>
-      
-       
+        <button type="button" class="btn btn-primary" id="addDoctor" name="dbtn_success">Save changes</button>
       </div>
       </div>
       </div>    
@@ -426,5 +419,29 @@ include'include/db.php';
       </div>
     </div>
     <?php include('partial/footer.php') ?>
+    <script>
+    // Codes for Jquery
+      $(document).ready(function(){
+          $('#addDoctor').click(function(){
+            // Codes for Ajax
+                $.ajax({
+                  type: "POST",
+                  url: "query/addDoctor.php",
+                  data: {
+                    fullname:$('#name').val(),
+                    email:$('#email').val(),
+                    address:$('#email2').val(),
+                    number:$('#number').val(),
+                    telephone:$('#telephone').val(),
+                    school:$('#school').val(),
+                    specialties:$('#specialties').val()
+                    },
+                    success:  function(data){
+                      alert('jetro');
+                  }
+              });
+          });
+      });
+    </script>
   </body>
 </html>

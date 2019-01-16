@@ -10,8 +10,6 @@ if(isset($_POST['signup-submit'])){
 	$email =$_POST['user-email'];
 	$password =$_POST['pass'];
 	$rpassword =$_POST['rpass'];
-	
-
 
 	if (empty($firstname) || empty($lastname) || empty($username) || empty($email) || empty($mobile) || empty($password) || empty($rpassword)) {
 		header("Location: ../login.php?error=emptyfieldsfirstname=".$firstname. "&lastname=". $lastname. "&username=".$username. "&user-email=".$email);
