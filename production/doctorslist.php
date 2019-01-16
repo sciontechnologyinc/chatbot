@@ -1,6 +1,20 @@
 <?php
 session_start();
-include'include/db.php';
+include'include/db.php';  
+
+if(isset($_POST['btn_success'])){
+
+$sql = "INSERT INTO d_info(d_fullname, d_email, d_address, d_number, d_telephone, d_school, d_specialt)
+VALUES ('1','2','3','4','5','6','7')";
+
+if (mysqli_query($conn, $sql)) {
+  header('Location:doctorslist.php');
+}
+else {
+  echo "Error". mysqli_error($conn);
+}
+
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -222,6 +236,7 @@ include'include/db.php';
 
       
       <div class="modal-body">
+     
       <form class="form-horizontal form-label-left" action="" method="post">
 
 
@@ -242,17 +257,17 @@ include'include/db.php';
   </div>
 </div>
 <div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="address">Address <span class="required">*</span>
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="txt_address">Address <span class="required">*</span>
   </label>
   <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="text" id="email2" name="address"  required="required" class="form-control col-md-7 col-xs-12">
+    <input type="text" id="email2" name="txt_address"  required="required" class="form-control col-md-7 col-xs-12">
   </div>
 </div>
 <div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="number">Number <span class="required">*</span>
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="txt_number">Number <span class="required">*</span>
   </label>
   <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="number" id="number" name="number" required="required"  class="form-control col-md-7 col-xs-12">
+    <input type="number" id="number" name="txt_number" required="required"  class="form-control col-md-7 col-xs-12">
   </div>
 </div>
 
@@ -296,9 +311,20 @@ include'include/db.php';
    
 
     <div class="ln_solid"></div>
+<<<<<<< HEAD
+
+      <div class="modal-footer">
+  
+                     
+        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button>
+        <button type="submit" class="btn btn-primary" name="btn_success">Save changes</button>
+      
+       
+=======
       <div class="modal-footer" style="display:inline-flex !important;float:right !important">
         <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button><br> <br>
         <button type="button" class="btn btn-primary" id="addDoctor" name="dbtn_success">Save changes</button>
+>>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
       </div>
       </div>
       </div>    
@@ -359,11 +385,11 @@ include'include/db.php';
                           <th>id</th>
                           <th style="width: 20%">Full Name</th>
                           <th>Email</th>
-                          <th style="width: 1%">address</th>
+                          <th style="width: 20%">address</th>
                           <th >number</th>
                           <th>Telephone</th>
           
-                          <th>School graduated</th>
+                          <th style="width: 20%">School graduated</th>
                           <th>Speialties</th>
 
                           <th style="width: 20%">Action</th>
@@ -419,6 +445,9 @@ include'include/db.php';
       </div>
     </div>
     <?php include('partial/footer.php') ?>
+<<<<<<< HEAD
+    
+=======
     <script>
     // Codes for Jquery
       $(document).ready(function(){
@@ -443,5 +472,6 @@ include'include/db.php';
           });
       });
     </script>
+>>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
   </body>
 </html>
