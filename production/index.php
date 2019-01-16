@@ -107,6 +107,7 @@ include'include/db.php';
 
             <br />
 
+<<<<<<< HEAD
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                <div class="menu_section">
@@ -207,6 +208,9 @@ include'include/db.php';
 
             </div>
             <!-- /sidebar menu -->
+=======
+      <?php include('partial/sidebar.php') ?>
+>>>>>>> 6a11b074959b54f56883368f2109ac031219c848
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
