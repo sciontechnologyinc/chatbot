@@ -1,7 +1,6 @@
 <?php
 session_start();
 include'include/db.php';
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@ include'include/db.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon2.png" type="image/ico" />
+  <link rel="icon" href="images/favicon2.png" type="image/ico" />
 
     <title>Fe Del Mundo Medical Center | </title>
 
@@ -23,7 +22,7 @@ include'include/db.php';
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
+  
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -41,7 +40,7 @@ include'include/db.php';
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-             <?php
+            <?php
  
     $musern = $_SESSION['musern'];
      $sql = "SELECT * FROM users where user_name = '".$musern."'";
@@ -50,14 +49,14 @@ include'include/db.php';
                         
                                while( $rs = mysqli_fetch_array( $result ) ){
                             if ($rs['status'] == 0) {
-                              
+                             
                             }
                                 else if ($rs['status'] == 1){
                                   echo '
                        <a href="index.php" class="site_title"><i class=" fa fa-heartbeat"></i> <span>Fe Del Mundo Medical Center</span></a>';
                                 }
                                 else {
-                                  echo ' Wait until the higer admin accept your, request thankyou.';
+                               echo ' Wait until the higer admin accept your, request thankyou.';
                                 }
         }
         mysqli_free_result( $result );
@@ -180,10 +179,10 @@ include'include/db.php';
                       <li><a href="profile.php">Profile</a></li></ul>';
                             }
                                 else if ($rs['role'] == 1 && $rs['status'] == 1){
-                                  echo '
+                                echo '
                                   <li><a><i class="fa fa-user-md"></i> DR\'s Side <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                     <li><a href="doctorslist.php">Add doctors</a></li>
+                     <li><a href="form_validation.php">Add doctors</a></li>
                       <li><a href="projects.php">List of admin</a></li>
                       <li><a href="contacts.php">Dr\'s Profile</a></li>';
                                 }
@@ -260,7 +259,7 @@ include'include/db.php';
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="include/logout.inc.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -336,24 +335,112 @@ include'include/db.php';
 
         <!-- page content -->
         <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Projects <small>Listing design</small></h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Projects</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <p>Simple table with project listing with progress and editing options</p>
+
+                    <!-- start project list -->
+                    <table class="table table-striped projects">
+                      <thead>
+                        <tr>
+                          <th>id</th>
+                          <th style="width: 20%">Full Name</th>
+                          <th>Email</th>
+                          <th style="width: 1%">address</th>
+                          <th >number</th>
+                          <th>Telephone</th>
           
-          <div class="header">
+                          <th>School graduated</th>
+                          <th>Speialties</th>
 
-  <h1 style="text-align: center;"><i class="  fa fa-heartbeat"></i> Fe Del Mundo Medical Center</h1>
+                          <th style="width: 20%">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                        $sql = "SELECT * FROM d_info";
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result)>0) 
+                        {
+                       while ($row = mysqli_fetch_assoc($result)) {
+                   
+                        ?>
+                        <tr>
+                          <td><?=$row['d_id']?></td>
+                          <td><?=$row['d_fullname']?></td>
+                          <td><?=$row['d_email']?></td>
+                          <td><?=$row['d_address']?></td>
+                          <td><?=$row['d_number']?></td>
+                          <td><?=$row['d_telephone']?></td>
+                          <td><?=$row['d_school']?></td>
+                          <td><?=$row['d_specialt']?></td>
+                          <td>
+                            <a href="edit.php?id=<?=$row['d_id']?>"" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                            <a href="delete.php?id=<?=$row['d_id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                          </td>
+                        </tr>
+                        <?php
+                        }
+                        }
+                        ?>
+                      </tbody>
+                    </table>
+                    <!-- end project list -->
 
-  
-    
-
-</div>
-                </div> 
-                <!-- end of weather widget -->
-             
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- /page content -->
 
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-             <h6><i class=" fa fa-heartbeat"></i> Fe Del Mundo Medical Center</h6>
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -369,38 +456,10 @@ include'include/db.php';
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
     <!-- bootstrap-progressbar -->
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+    
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-	
   </body>
 </html>
