@@ -291,7 +291,6 @@ include'include/db.php';
                       console.log(contact[0].d_fullname);
                       console.log(contact.length)
                       for(x=0; x<contact.length; x++){
-
                       $('.displayProfile').append('<div class="col-md-4 col-sm-4 col-xs-12 profile_details">'+
                                                   '<div class="well profile_view">'+
                                                     '<div class="col-sm-12">'+
@@ -329,9 +328,7 @@ include'include/db.php';
                                                    '</div>'+
                                                   '</div>'+
                                                 '</div>');
-
                       }
-                                          
                   }
           });
       });
