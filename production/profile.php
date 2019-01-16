@@ -517,5 +517,10 @@ include 'include/db.php';
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 
+    <script>
+        $(document).ready(function(){
+            
+        })
+    </script>
   </body>
 </html>

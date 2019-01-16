@@ -445,9 +445,6 @@ else {
       </div>
     </div>
     <?php include('partial/footer.php') ?>
-<<<<<<< HEAD
-    
-=======
     <script>
     // Codes for Jquery
       $(document).ready(function(){
@@ -472,6 +469,5 @@ else {
           });
       });
     </script>
->>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
   </body>
 </html>
