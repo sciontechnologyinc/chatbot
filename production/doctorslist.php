@@ -211,7 +211,112 @@ include'include/db.php';
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Projects <small>Listing design</small></h3>
+               
+                  <div class="x_content">
+
+<!-- modals -->
+<!-- Large modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Doctor</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-body">
+      <form class="form-horizontal form-label-left" action="" method="post">
+
+
+<span class="section">Doctor's Information</span>
+
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" name="fullname"> Name of Doctor <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="fullname" required="required" type="text">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email" name= "email">Email of Doctor <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="address">Address <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="text" id="email2" name="address"  required="required" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="number">Number <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="number" id="number" name="number" required="required"  class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+
+
+
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone" name="telephone">Telephone <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="tel" id="telephone" name="telephone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+     <div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school"> School graduated at <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input id="" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Specialties <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <select id="textarea" required="required" name="specialties" class="form-control col-md-7 col-xs-12">
+      <option></option>
+      <option>ALLERGY & IMMUNOLOGY</option>
+      <option>ANESTHESIOLOGY</option>
+      <option> DERMATOLOGY</option>
+      <option>DIAGNOSTIC RADIOLOGY</option>
+      <option>EMERGENCY MEDICINE</option>
+      <option> FAMILY MEDICINE</option>
+      <option> INTERNAL MEDICINE</option>
+      <option>OPHTHALMOLOGY</option>
+      <option>PATHOLOGY</option>
+      <option>PEDIATRICS</option>
+      <option>PHYSICAL MEDICINE & REHABILITATION</option>
+      <option>PSYCHIATRY</option>
+      <option>SURGERY</option>
+      <option>UROLOGY</option>
+    </select>
+   
+
+    <div class="ln_solid"></div>
+
+      <div class="modal-footer">
+  
+                     
+        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button><br> <br>
+        <button type="button" class="btn btn-primary" name="dbtn_success">Save changes</button>
+      
+       
+      </div>
+      </div>
+      </div>    
+</div>
+                    </div>
+        
+              
+    </div>           
+  </div>  </form>
+</div>
+
               </div>
 
               <div class="title_right">
