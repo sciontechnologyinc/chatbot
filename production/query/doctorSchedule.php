@@ -2,40 +2,21 @@
 session_start();
 include'include/db.php';
 
+if(isset($_POST['dbtn_submit'])){
+
+$sql = "INSERT INTO d_info(d_fullname, d_email, d_address, d_number, d_telephone, d_school, d_specialt)
+VALUES ('".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['address']."', '".$_POST['number']."', '".$_POST['telephone']."', '".$_POST['school']."', '".$_POST['specialties']."')";
+if (mysqli_query($conn, $sql)) {
+  header('Location:index.php');
+}
+else {
+  echo "Error". mysqli_error($conn);
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head></head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/favicon2.png" type="image/ico" />
-
-    <title>Fe Del Mundo Medical Center | </title>
-
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-  
-    <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-      <link href="../vendors/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet">
-    <link href="../vendors/fullcalendar/dist/fullcalendar.print.css" rel="stylesheet" media="print">
-
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    </head>
+ <?php include('partial/header.php') ?>
 
   <body class="nav-md">
     <div class="container body">
@@ -43,7 +24,7 @@ include'include/db.php';
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <?php
+                    <?php
  
     $musern = $_SESSION['musern'];
      $sql = "SELECT * FROM users where user_name = '".$musern."'";
@@ -59,7 +40,7 @@ include'include/db.php';
                        <a href="index.php" class="site_title"><i class=" fa fa-heartbeat"></i> <span>Fe Del Mundo Medical Center</span></a>';
                                 }
                                 else {
-          echo ' Wait until the higer admin accept your, request thankyou.';
+                                  echo ' Wait until the higer admin accept your, request thankyou.';
                                 }
         }
         mysqli_free_result( $result );
@@ -103,13 +84,10 @@ include'include/db.php';
          ?>
              </div>
                     </div>
-    
-  
             <!-- /menu profile quick info -->
-
             <br />
+ <?php include('partial/sidebar.php') ?>
 
-      <?php include('partial/sidebar.php') ?>
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
           
@@ -241,7 +219,7 @@ include'include/db.php';
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Calendar <small>Click to add/edit events</small></h3>
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -249,20 +227,19 @@ include'include/db.php';
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                              <button class="btn btn-default" type="button">Go!</button>
+                          </span>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Calendar Events <small>Sessions</small></h2>
+                    <h2>Doctor's Validation</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -282,8 +259,88 @@ include'include/db.php';
                   </div>
                   <div class="x_content">
 
-                    <div id='calendar'></div>
+                    <form class="form-horizontal form-label-left" action="" method="post">
 
+                      <p>Insert information of doctor</a>
+                      </p>
+                      <span class="section">Doctor's Information</span>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" name="fullname"> Name of Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="fullname" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email" name= "email">Email of Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="address">Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="email2" name="address"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="number">Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number" required="required"  class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                  
+                 
+                   
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone" name="telephone">Telephone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="tel" id="telephone" name="telephone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                           <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school"> School graduated at <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Specialties <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select id="textarea" required="required" name="specialties" class="form-control col-md-7 col-xs-12">
+                            <option></option>
+                            <option>ALLERGY & IMMUNOLOGY</option>
+                            <option>ANESTHESIOLOGY</option>
+                            <option> DERMATOLOGY</option>
+                            <option>DIAGNOSTIC RADIOLOGY</option>
+                            <option>EMERGENCY MEDICINE</option>
+                            <option> FAMILY MEDICINE</option>
+                            <option> INTERNAL MEDICINE</option>
+                            <option>OPHTHALMOLOGY</option>
+                            <option>PATHOLOGY</option>
+                            <option>PEDIATRICS</option>
+                            <option>PHYSICAL MEDICINE & REHABILITATION</option>
+                            <option>PSYCHIATRY</option>
+                            <option>SURGERY</option>
+                            <option>UROLOGY</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success" name="dbtn_submit">Submit</button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -293,9 +350,10 @@ include'include/db.php';
         <!-- /page content -->
 
         <!-- footer content -->
+     <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+             <h6><i class=" fa fa-heartbeat"></i> Fe Del Mundo Medical Center</h6>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -303,81 +361,7 @@ include'include/db.php';
       </div>
     </div>
 
-    <!-- calendar modal -->
-    <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel">New Calendar Entry</h4>
-          </div>
-          <div class="modal-body">
-            <div id="testmodal" style="padding: 5px 20px;">
-              <form id="antoform" class="form-horizontal calender" role="form">
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title" name="title">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Description</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel2">Edit Calendar Entry</h4>
-          </div>
-          <div class="modal-body">
-
-            <div id="testmodal2" style="padding: 5px 20px;">
-              <form id="antoform2" class="form-horizontal calender" role="form">
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title2" name="title2">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Description</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
-                  </div>
-                </div>
-
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
-    <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
-    <!-- /calendar modal -->
-        
-    <?php include('partial/footer.php') ?>
-
+   <?php include('partial/footer.php') ?>
+	
   </body>
 </html>
