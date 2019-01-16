@@ -1,24 +1,22 @@
 <?php
 session_start();
-include'include/db.php';  
+include'include/db.php';
 
-if(isset($_POST['btn_success'])){
+if(isset($_POST['dbtn_submit'])){
 
 $sql = "INSERT INTO d_info(d_fullname, d_email, d_address, d_number, d_telephone, d_school, d_specialt)
-VALUES ('1','2','3','4','5','6','7')";
-
+VALUES ('".$_POST['fullname']."', '".$_POST['email']."', '".$_POST['address']."', '".$_POST['number']."', '".$_POST['telephone']."', '".$_POST['school']."', '".$_POST['specialties']."')";
 if (mysqli_query($conn, $sql)) {
-  header('Location:doctorslist.php');
+  header('Location:index.php');
 }
 else {
   echo "Error". mysqli_error($conn);
 }
-
-} 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('partial/header.php') ?>
+ <?php include('partial/header.php') ?>
 
   <body class="nav-md">
     <div class="container body">
@@ -26,7 +24,7 @@ else {
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-            <?php
+              <?php
  
     $musern = $_SESSION['musern'];
      $sql = "SELECT * FROM users where user_name = '".$musern."'";
@@ -35,14 +33,14 @@ else {
                         
                                while( $rs = mysqli_fetch_array( $result ) ){
                             if ($rs['status'] == 0) {
-                             
+                              
                             }
                                 else if ($rs['status'] == 1){
                                   echo '
                        <a href="index.php" class="site_title"><i class=" fa fa-heartbeat"></i> <span>Fe Del Mundo Medical Center</span></a>';
                                 }
                                 else {
-                               echo ' Wait until the higer admin accept your, request thankyou.';
+                                  echo ' Wait until the higer admin accept your, request thankyou.';
                                 }
         }
         mysqli_free_result( $result );
@@ -86,13 +84,9 @@ else {
          ?>
              </div>
                     </div>
-    
-  
             <!-- /menu profile quick info -->
-
             <br />
-
-            <?php include('partial/sidebar.php') ?>
+ <?php include('partial/sidebar.php') ?>
 
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
@@ -132,6 +126,8 @@ else {
     } else {
         echo 'No post yet';
     }
+
+          
          ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
@@ -144,7 +140,7 @@ else {
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -223,119 +219,7 @@ else {
           <div class="">
             <div class="page-title">
               <div class="title_left">
-               
-                  <div class="x_content">
-
-<!-- modals -->
-<!-- Large modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Add Doctor</button>
-
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-
-      
-      <div class="modal-body">
-     
-      <form class="form-horizontal form-label-left" action="" method="post">
-
-
-<span class="section">Doctor's Information</span>
-
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" name="fullname"> Name of Doctor <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="fullname" required="required" type="text">
-  </div>
-</div>
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email" name= "email">Email of Doctor <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
-  </div>
-</div>
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="txt_address">Address <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="text" id="email2" name="txt_address"  required="required" class="form-control col-md-7 col-xs-12">
-  </div>
-</div>
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="txt_number">Number <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="number" id="number" name="txt_number" required="required"  class="form-control col-md-7 col-xs-12">
-  </div>
-</div>
-
-
-
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone" name="telephone">Telephone <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="tel" id="telephone" name="telephone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
-  </div>
-</div>
-     <div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school"> School graduated at <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <input id="school" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
-  </div>
-</div>
-<div class="item form-group">
-  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Specialties <span class="required">*</span>
-  </label>
-  <div class="col-md-6 col-sm-6 col-xs-12">
-    <select required="required" name="specialties" id="specialties" class="form-control col-md-7 col-xs-12">
-      <option></option>
-      <option>ALLERGY & IMMUNOLOGY</option>
-      <option>ANESTHESIOLOGY</option>
-      <option> DERMATOLOGY</option>
-      <option>DIAGNOSTIC RADIOLOGY</option>
-      <option>EMERGENCY MEDICINE</option>
-      <option> FAMILY MEDICINE</option>
-      <option> INTERNAL MEDICINE</option>
-      <option>OPHTHALMOLOGY</option>
-      <option>PATHOLOGY</option>
-      <option>PEDIATRICS</option>
-      <option>PHYSICAL MEDICINE & REHABILITATION</option>
-      <option>PSYCHIATRY</option>
-      <option>SURGERY</option>
-      <option>UROLOGY</option>
-    </select>
-   
-
-    <div class="ln_solid"></div>
-<<<<<<< HEAD
-
-      <div class="modal-footer">
-  
-                     
-        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button>
-        <button type="submit" class="btn btn-primary" name="btn_success">Save changes</button>
-      
-       
-=======
-      <div class="modal-footer" style="display:inline-flex !important;float:right !important">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button><br> <br>
-        <button type="button" class="btn btn-primary" id="addDoctor" name="dbtn_success">Save changes</button>
->>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
-      </div>
-      </div>
-      </div>    
-</div>
-                    </div>
-        
-              
-    </div>           
-  </div>  </form>
-</div>
-
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -343,20 +227,19 @@ else {
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search for...">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
-                    </span>
+                              <button class="btn btn-default" type="button">Go!</button>
+                          </span>
                   </div>
                 </div>
               </div>
             </div>
-            
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Projects</h2>
+                    <h2>Doctor's Validation</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -376,102 +259,105 @@ else {
                   </div>
                   <div class="x_content">
 
-                    <p>Simple table with project listing with progress and editing options</p>
+                    <form class="form-horizontal form-label-left" action="" method="post">
 
-                    <!-- start project list -->
-                    <table class="table table-striped projects">
-                      <thead>
-                        <tr>
-                          <th>id</th>
-                          <th style="width: 20%">Full Name</th>
-                          <th>Email</th>
-                          <th style="width: 20%">address</th>
-                          <th >number</th>
-                          <th>Telephone</th>
-          
-                          <th style="width: 20%">School graduated</th>
-                          <th>Speialties</th>
+                      <p>Insert information of doctor</a>
+                      </p>
+                      <span class="section">Doctor's Information</span>
 
-                          <th style="width: 20%">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php 
-                        $sql = "SELECT * FROM d_info";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result)>0) 
-                        {
-                       while ($row = mysqli_fetch_assoc($result)) {
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name" name="fullname"> Name of Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="fullname" required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                      <div class="modal-footer">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email" name= "email">Email of Doctor <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="address">Address <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="email2" name="address"  required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number" name="number">Number <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="number" name="number" required="required"  class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                  
+                 
                    
-                        ?>
-                        <tr>
-                          <td><?=$row['d_id']?></td>
-                          <td><?=$row['d_fullname']?></td>
-                          <td><?=$row['d_email']?></td>
-                          <td><?=$row['d_address']?></td>
-                          <td><?=$row['d_number']?></td>
-                          <td><?=$row['d_telephone']?></td>
-                          <td><?=$row['d_school']?></td>
-                          <td><?=$row['d_specialt']?></td>
-                          <td>
-                            <a href="edit.php?id=<?=$row['d_id']?>"" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="delete.php?id=<?=$row['d_id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <?php
-                        }
-                        }
-                        ?>
-                      </tbody>
-                    </table>
-                    <!-- end project list -->
-
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone" name="telephone">Telephone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="tel" id="telephone" name="telephone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                           <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school"> School graduated at <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="" type="text" name="school" class="optional form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Specialties <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select id="textarea" required="required" name="specialties" class="form-control col-md-7 col-xs-12">
+                            <option></option>
+                            <option>ALLERGY & IMMUNOLOGY</option>
+                            <option>ANESTHESIOLOGY</option>
+                            <option> DERMATOLOGY</option>
+                            <option>DIAGNOSTIC RADIOLOGY</option>
+                            <option>EMERGENCY MEDICINE</option>
+                            <option> FAMILY MEDICINE</option>
+                            <option> INTERNAL MEDICINE</option>
+                            <option>OPHTHALMOLOGY</option>
+                            <option>PATHOLOGY</option>
+                            <option>PEDIATRICS</option>
+                            <option>PHYSICAL MEDICINE & REHABILITATION</option>
+                            <option>PSYCHIATRY</option>
+                            <option>SURGERY</option>
+                            <option>UROLOGY</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+             <h6><i class=" fa fa-heartbeat"></i> Fe Del Mundo Medical Center</h6>
           </div>
           <div class="clearfix"></div>
         </footer>
-        <!-- /footer content -->
       </div>
     </div>
-    <?php include('partial/footer.php') ?>
-<<<<<<< HEAD
-    
-=======
-    <script>
-    // Codes for Jquery
-      $(document).ready(function(){
-          $('#addDoctor').click(function(){
-            // Codes for Ajax
-                $.ajax({
-                  type: "POST",
-                  url: "query/addDoctor.php",
-                  data: {
-                    fullname:$('#name').val(),
-                    email:$('#email').val(),
-                    address:$('#email2').val(),
-                    number:$('#number').val(),
-                    telephone:$('#telephone').val(),
-                    school:$('#school').val(),
-                    specialties:$('#specialties').val()
-                    },
-                    success:  function(data){
-                      alert('jetro');
-                  }
-              });
-          });
-      });
-    </script>
->>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
+
+   <?php include('partial/footer.php') ?>
+	
   </body>
 </html>
