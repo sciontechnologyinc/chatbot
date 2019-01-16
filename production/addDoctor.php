@@ -24,7 +24,7 @@ else {
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                    <?php
+              <?php
  
     $musern = $_SESSION['musern'];
      $sql = "SELECT * FROM users where user_name = '".$musern."'";
@@ -347,17 +347,12 @@ else {
             </div>
           </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-     <!-- footer content -->
         <footer>
           <div class="pull-right">
              <h6><i class=" fa fa-heartbeat"></i> Fe Del Mundo Medical Center</h6>
           </div>
           <div class="clearfix"></div>
         </footer>
-        <!-- /footer content -->
       </div>
     </div>
 
