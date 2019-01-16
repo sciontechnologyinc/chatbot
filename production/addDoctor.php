@@ -292,6 +292,7 @@ else {
                         </div>
                       </div>
                       <div class="item form-group">
+                      <div class="modal-footer">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email" name= "email">Email of Doctor <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -354,9 +355,9 @@ else {
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary">Cancel</button>
-                          <button id="send" type="submit" class="btn btn-success" name="dbtn_submit">Submit</button>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
                         </div>
                       </div>
                     </form>
