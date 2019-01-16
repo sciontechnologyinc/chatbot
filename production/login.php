@@ -32,7 +32,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form action="include/login.inc.php" method="post">
-              <h1>Login Form jet</h1>
+              <h1>Login Form</h1>
               <?php 
                  if (isset($_GET['error'])) {
                   if ($_GET['error'] == "sqlerror") {
