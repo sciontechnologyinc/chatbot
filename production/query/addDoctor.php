@@ -24,7 +24,22 @@ include('../include/db.php');
     }
   
    echo json_encode($dbdata);
-    }else{
+    }else if($_GET['a'] =='addSchedule'){
+        $iddoctor = $_POST['iddoctor'];
+        $day = $_POST['day'];
+        $timein = $_POST['timein'];
+        $timeout = $_POST['timeout'];
+        $status = $_POST['status'];
 
+         $result = $conn->query("SELECT id_doctor,day FROM schedule WHERE id_doctor = '$iddoctor' AND day='$day' ");
+         if($result->num_rows == 0) {
+            $sql = "INSERT INTO schedule(id_doctor, day, timein, timeout, status)
+            VALUES ('$iddoctor', '$day','$timein','$timeout','$status')";
+              mysqli_query($conn, $sql);
+         } else {
+            $sql = "UPDATE schedule SET timein ='$timein',timeout= '$timeout' WHERE id_doctor ='$iddoctor' AND day='$day'";
+            mysqli_query($conn, $sql);
+         }
+        
     }
 ?>

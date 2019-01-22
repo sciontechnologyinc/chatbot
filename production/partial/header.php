@@ -9,5 +9,7 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="../build/css/custom.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="css/clockpicker.css">
+    <link rel="stylesheet" href="css/clockpicker12hour.css" />
 </head>
