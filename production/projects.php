@@ -232,7 +232,7 @@ include'include/db.php';
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Projects</h2>
+                    <h2>Admins list</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -252,7 +252,7 @@ include'include/db.php';
                   </div>
                   <div class="x_content">
 
-                    <p>Simple table with project listing with progress and editing options</p>
+                   
 
                     <!-- start project list -->
                     <table class="table table-striped projects">
@@ -275,11 +275,12 @@ include'include/db.php';
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result)>0) 
                         {
+                        $var = 1;
                        while ($row = mysqli_fetch_assoc($result)) {
-                   
+
                         ?>
                         <tr>
-                          <td><?=$row['user_id']?></td>
+                          <td><?= $var++ ?></td>
                           <td><?=$row['user_firstn']?></td>
                           <td><?=$row['user_lastn']?></td>
                           <td><?=$row['user_name']?></td>

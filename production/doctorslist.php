@@ -1,20 +1,6 @@
 <?php
 session_start();
-include'include/db.php';  
-
-if(isset($_POST['btn_success'])){
-
-$sql = "INSERT INTO d_info(d_fullname, d_email, d_address, d_number, d_telephone, d_school, d_specialt)
-VALUES ('1','2','3','4','5','6','7')";
-
-if (mysqli_query($conn, $sql)) {
-  header('Location:doctorslist.php');
-}
-else {
-  echo "Error". mysqli_error($conn);
-}
-
-} 
+include'include/db.php';                  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -260,7 +246,7 @@ else {
   <label class="control-label col-md-3 col-sm-3 col-xs-12" for="text" name="txt_address">Address <span class="required">*</span>
   </label>
   <div class="col-md-6 col-sm-6 col-xs-12">
-    <input type="text" id="email2" name="txt_address"  required="required" class="form-control col-md-7 col-xs-12">
+    <input type="text" id="address" name="txt_address"  required="required" class="form-control col-md-7 col-xs-12">
   </div>
 </div>
 <div class="item form-group">
@@ -311,20 +297,107 @@ else {
    
 
     <div class="ln_solid"></div>
-<<<<<<< HEAD
-
-      <div class="modal-footer">
-  
-                     
-        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button>
-        <button type="submit" class="btn btn-primary" name="btn_success">Save changes</button>
-      
-       
-=======
       <div class="modal-footer" style="display:inline-flex !important;float:right !important">
-        <button type="button" class="btn btn-danger" data-dismiss="modal" style="position:center;">Close</button><br> <br>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button><br> <br>
         <button type="button" class="btn btn-primary" id="addDoctor" name="dbtn_success">Save changes</button>
->>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
+      </div>
+      </div>
+      </div>    
+</div>
+                    </div>
+        
+              
+    </div>           
+  </div>  </form>
+</div>
+
+<!-- edit-modal -->
+
+<div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      
+      <div class="modal-body">
+     
+      <form class="form-horizontal form-label-left" action="" method="post">
+
+
+<span class="section">Doctor's Information</span>
+<input type="text" id="userId" hidden>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="uname" name="ufullname">Update Name of Doctor <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input id="uname" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="ufullname" required="required" type="text">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="uemail" name= "uemail">Update Email of Doctor <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="email" id="uemail" name="uemail" required="required" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="uaddress" name="txt_address">Update Address <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="text" id="uaddress" name="uaddress"  required="required" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="unumber" name="txt_number">Update Number <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="number" id="unumber" name="unumber" required="required"  class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+
+
+
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="utelephone" name="telephone">Update Telephone <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input type="tel" id="utelephone" name="utelephone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+  </div>
+</div>
+     <div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" name="school">Update School graduated at <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <input id="uschool" type="text" name="uschool" class="optional form-control col-md-7 col-xs-12">
+  </div>
+</div>
+<div class="item form-group">
+  <label class="control-label col-md-3 col-sm-3 col-xs-12" for="textarea"  name="specialties">Update Specialties <span class="required">*</span>
+  </label>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <select required="required" name="uspecialties" id="uspecialties" class="form-control col-md-7 col-xs-12">
+      <option></option>
+      <option>ALLERGY & IMMUNOLOGY</option>
+      <option>ANESTHESIOLOGY</option>
+      <option> DERMATOLOGY</option>
+      <option>DIAGNOSTIC RADIOLOGY</option>
+      <option>EMERGENCY MEDICINE</option>
+      <option> FAMILY MEDICINE</option>
+      <option> INTERNAL MEDICINE</option>
+      <option>OPHTHALMOLOGY</option>
+      <option>PATHOLOGY</option>
+      <option>PEDIATRICS</option>
+      <option>PHYSICAL MEDICINE & REHABILITATION</option>
+      <option>PSYCHIATRY</option>
+      <option>SURGERY</option>
+      <option>UROLOGY</option>
+    </select>
+   
+
+    <div class="ln_solid"></div>
+      <div class="modal-footer" style="display:inline-flex !important;float:right !important">
+        <button type="button" class="btn btn-danger" data-dismiss="modal" >Close</button><br> <br>
+        <button type="button" class="btn btn-primary" id="updateDoctor" name="dbtn_success" >Save changes</button>
+     <input type = "hidden" id="hidden_user_id">
       </div>
       </div>
       </div>    
@@ -401,11 +474,12 @@ else {
                         $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result)>0) 
                         {
+                            $var = 1;
                        while ($row = mysqli_fetch_assoc($result)) {
                    
                         ?>
                         <tr>
-                          <td><?=$row['d_id']?></td>
+                          <td><?=$var++?></td>
                           <td><?=$row['d_fullname']?></td>
                           <td><?=$row['d_email']?></td>
                           <td><?=$row['d_address']?></td>
@@ -414,8 +488,8 @@ else {
                           <td><?=$row['d_school']?></td>
                           <td><?=$row['d_specialt']?></td>
                           <td>
-                            <a href="edit.php?id=<?=$row['d_id']?>"" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="delete.php?id=<?=$row['d_id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                            <a data-toggle="modal" data-target=".bs-example-modal-lg1" class="btn btn-info btn-xs editUser"><i class="fa fa-pencil"></i> Edit </a>
+                            <a href="d_delete.php?id=<?=$row['d_id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                           </td>
                         </tr>
                         <?php
@@ -445,9 +519,6 @@ else {
       </div>
     </div>
     <?php include('partial/footer.php') ?>
-<<<<<<< HEAD
-    
-=======
     <script>
     // Codes for Jquery
       $(document).ready(function(){
@@ -455,23 +526,65 @@ else {
             // Codes for Ajax
                 $.ajax({
                   type: "POST",
-                  url: "query/addDoctor.php",
+                  url: "query/addDoctor.php?a=add",
                   data: {
                     fullname:$('#name').val(),
                     email:$('#email').val(),
-                    address:$('#email2').val(),
+                    address:$('#address').val(),
                     number:$('#number').val(),
                     telephone:$('#telephone').val(),
                     school:$('#school').val(),
                     specialties:$('#specialties').val()
                     },
                     success:  function(data){
-                      alert('jetro');
+                      location.reload();
                   }
               });
           });
       });
+      $(document).ready(function(){
+        showTable();
+        $("body").delegate( ".editUser", "click", function() {
+            $.ajax({
+                type: "POST",
+                url: "query/addDoctor.php?a=editData",
+                data: {
+                    id:this.id
+                    },
+                    success:  function(data){
+                        var editUser = JSON.parse(data);
+                        var x = editUser[0];
+                        $('#userId').val(x.id);
+                    $('#name').val(x.fullname),
+                    $('#email').val(x.email),
+                    $('#address').val(x.address),
+                    $('#number').val(x.number),
+                    $('#telephone').val(x.telephone),
+                    $('#school').val(x.school),
+                    $('#specialties').val(x.specialties)
+                }
+            });
+        });
+      $('#updateDoctor').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "query/addDoctor.php?a=updateDoctor",
+                data: {
+                    id:$('#userId').val(),
+                    fullname:$('#uname').val(),
+                    email:$('#uemail').val(),
+                    address:$('#uaddress').val(),
+                    number:$('#unumber').val(),
+                    telephone:$('#utelephone').val(),
+                    school:$('#uschool').val(),
+                    specialties:$('#uspecialties').val()
+                    },
+                    success:  function(data){
+                        location.reload();
+                }
+            });
+        })
+    })
     </script>
->>>>>>> 5c0ca52a1074c633b226d1f4b12e9c89a77d2845
   </body>
 </html>
