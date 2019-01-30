@@ -288,7 +288,7 @@ include'include/db.php';
                     success:  function(data){
                       console.log(data);
                       var contact = JSON.parse(data);
-                      console.log(contact[0].d_fullname);
+                      console.log(contact[0].d_fullname + 'jetro');
                       console.log(contact.length)
                       for(x=0; x<contact.length; x++){
                       $('.displayProfile').append('<div class="col-md-4 col-sm-4 col-xs-12 profile_details">'+
@@ -297,11 +297,10 @@ include'include/db.php';
                                                      '<h4 class="brief"><i>'+contact[x].d_specialt+'</i></h4>'+
                                                       '<div class="left col-xs-7">'+
                                                         '<h2>'+contact[x].d_fullname+'</h2>'+
-                                                        '<p><strong>School graduated at: </strong>'+contact[x].d_school+' </p>'+
+                                                        '<p><strong>About: </strong> Web Designer / UI. </p>'+
                                                         '<ul class="list-unstyled">'+
                                                           '<li><i class="fa fa-building"></i> Address:'+contact[x].d_address+'</li>'+
-                                                          '<li><i class="fa fa-phone"></i> Mobile #:'+contact[x].d_number+'</li>'+
-                                                          '<li><i class="fa fa-phone"></i> Telephone #:'+contact[x].d_telephone+'</li>'+
+                                                          '<li><i class="fa fa-phone"></i> Phone #:'+contact[x].d_telephone+'</li>'+
                                                         '</ul>'+
                                                       '</div>'+
                                                       '<div class="right col-xs-5 text-center">'+
@@ -310,7 +309,7 @@ include'include/db.php';
                                                     '</div>'+
                                                     '<div class="col-xs-12 bottom text-center">'+
                                                       '<div class="col-xs-12 col-sm-6 emphasis">'+
-                                                       
+                                                        
                                                       '</div>'+
                                                       '<div class="col-xs-12 col-sm-6 emphasis">'+
                                                         '<button type="button" class="btn btn-success btn-xs"> <i class="fa fa-user">'+

@@ -24,30 +24,37 @@ include('../include/db.php');
     }
   
    echo json_encode($dbdata);
-    }else if($_GET['a']=='editData'){
-      $id = $_POST['d_id'];
-      
-      $result = $conn->query("SELECT * FROM d_info WHERE d_id='$id'");
-      $dbdata = array();
-         while ( $row = $result->fetch_assoc())  {
-           $dbdata[]=$row;
-         }
-         echo json_encode($dbdata);
-  }else if($_GET['a']=='updateDoctor'){
-      $id = $_POST['id'];
-      $name = $_POST['fullname'];
-      $email = $_POST['email'];
-      $address = $_POST['address'];
-      $number = $_POST['number'];
-      $telephone = $_POST['telephone'];
-      $school = $_POST['school'];
-      $specialties = $_POST['specialties'];
-      
-      $sql = "UPDATE d_info SET d_fullname = '$name', d_email = '$email', d_address = '$address', d_number = '$number', d_telephone = '$telephone', d_school = '$school', d_specialt = '$specialties' WHERE d_id ='$id'";
-      mysqli_query($conn, $sql);
-  }
-    else{
-
     }
     
+    
+    else if($_GET['a'] =='addSchedule'){
+        $iddoctor = $_POST['iddoctor'];
+        $day = $_POST['day'];
+        $timein = $_POST['timein'];
+        $timeout = $_POST['timeout'];
+        $status = $_POST['status'];
+
+         $result = $conn->query("SELECT id_doctor,day FROM schedule WHERE id_doctor = '$iddoctor' AND day='$day' ");
+         if($result->num_rows == 0) {
+            $sql = "INSERT INTO schedule(id_doctor, day, timein, timeout, status)
+            VALUES ('$iddoctor', '$day','$timein','$timeout','$status')";
+              mysqli_query($conn, $sql);
+         } else {
+            $sql = "UPDATE schedule SET timein ='$timein',timeout= '$timeout' WHERE id_doctor ='$iddoctor' AND day='$day'";
+            mysqli_query($conn, $sql);
+         }
+        
+    }
+
+    else if($_GET['a'] =='showSchedule'){
+      $iddoctor = $_POST['iddoctor'];
+
+       $result = $conn->query("SELECT * FROM schedule WHERE id_doctor = '$iddoctor'");
+       $dbdata = array();
+       while ( $row = $result->fetch_assoc())  {
+         $dbdata[]=$row;
+       }
+       echo json_encode($dbdata);
+      
+  }
 ?>

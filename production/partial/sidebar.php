@@ -74,7 +74,8 @@
                                   echo '
                                   <li><a><i class="fa fa-user-md"></i> DR\'s Side <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu"> 
-                     <li><a href="doctorslist.php">Add doctors</a></li>
+                     <li><a href="doctorslist.php">Doctors</a></li>
+                     <li><a href="schedule.php">Schedule</a></li>
                       <li><a href="projects.php">List of admin</a></li>
                       <li><a href="contacts.php">Dr\'s Profile</a></li>';
                                 }
