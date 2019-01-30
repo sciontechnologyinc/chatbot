@@ -24,7 +24,10 @@ include('../include/db.php');
     }
   
    echo json_encode($dbdata);
-    }else if($_GET['a'] =='addSchedule'){
+    }
+    
+    
+    else if($_GET['a'] =='addSchedule'){
         $iddoctor = $_POST['iddoctor'];
         $day = $_POST['day'];
         $timein = $_POST['timein'];
@@ -42,4 +45,16 @@ include('../include/db.php');
          }
         
     }
+
+    else if($_GET['a'] =='showSchedule'){
+      $iddoctor = $_POST['iddoctor'];
+
+       $result = $conn->query("SELECT * FROM schedule WHERE id_doctor = '$iddoctor'");
+       $dbdata = array();
+       while ( $row = $result->fetch_assoc())  {
+         $dbdata[]=$row;
+       }
+       echo json_encode($dbdata);
+      
+  }
 ?>

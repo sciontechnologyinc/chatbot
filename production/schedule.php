@@ -258,7 +258,7 @@ include'include/db.php';
                         <div class="form-group">
                             <label for="pwd">Doctor:</label>
                             <select class="form-control" id="doctordropdown">
-                                
+                                <option value="" selected disabled hidden>Choose Doctor</option>
                             </select>
                         </div>
                         <div class="weeklySchedule">
@@ -520,6 +520,7 @@ include'include/db.php';
                         }
                     });
                 }
+                location.reload();
             }else{
                 return false;
             }
@@ -530,15 +531,65 @@ include'include/db.php';
                   url: "query/addDoctor.php?a=select",
                   data: {},
                     success:  function(data){
-                      console.log(data);
                       var contact = JSON.parse(data);
-                      console.log(contact[0].d_fullname);
-                      console.log(contact.length)
                       for(x=0; x<contact.length; x++){
                           $('#doctordropdown').append('<option value="'+contact[x].d_id+'">'+contact[x].d_fullname+'</option>')  
                       }
                   }
           });
+
+          $('#doctordropdown').change(function(){
+                $.ajax({
+                    type: "POST",
+                    url: "query/addDoctor.php?a=showSchedule",
+                    data: {
+                        iddoctor: $('#doctordropdown').val()
+                    },
+                        success:  function(data){
+                        var schedule = JSON.parse(data);
+                        
+                        for(x=0; x<schedule.length; x++){
+                            if(schedule[x].day == 'Monday'){
+                                $('#mon').prop('checked', true);
+                                $('#monTimeIn').val(schedule[x].timein);
+                                $('#monTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Tuesday'){
+                                $('#tues').prop('checked', true);
+                                $('#tuesTimeIn').val(schedule[x].timein);
+                                $('#tuesTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Wednesday'){
+                                $('#wed').prop('checked', true);
+                                $('#wedTimeIn').val(schedule[x].timein);
+                                $('#wedTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Thursday'){
+                                $('#thurs').prop('checked', true);
+                                $('#thursTimeIn').val(schedule[x].timein);
+                                $('#thursTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Friday'){
+                                $('#fri').prop('checked', true);
+                                $('#friTimeIn').val(schedule[x].timein);
+                                $('#friTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Saturday'){
+                                $('#sat').prop('checked', true);
+                                $('#satTimeIn').val(schedule[x].timein);
+                                $('#satTimeOut').val(schedule[x].timeout);
+                            }
+                            if(schedule[x].day == 'Sunday'){
+                                $('#sun').prop('checked', true);
+                                $('#sunTimeIn').val(schedule[x].timein);
+                                $('#sunTimeOut').val(schedule[x].timeout);
+                            }
+                        }
+                    }
+            });
+          })
+
+
     })
     </script>
 
