@@ -41,10 +41,13 @@
                    if ($_GET['error'] =="wrongpassword") {
                   echo '<p class="text-danger"> Invalid password !<br> Please try again.</p>';
                  }
+                 if ($_GET['error'] =="status") {
+                  echo '<p class="text-danger"> Permission as admin is not granted at this time. Please wait.</p>';
+                 }
 }
               ?>
               <div>
-                <input type="text" class="form-control" name="musern" placeholder="Username" required="" />
+                <input type="text" class="form-control" name="musern" placeholder="Username" required="" value="<?php if(isset($_GET['musern'])){ echo htmlentities($_GET['musern']);} ?>" />
               </div>
               <div>
                 <input type="password" class="form-control" name="mpass" placeholder="Password" required="" />
@@ -113,19 +116,19 @@
             <form action="include/signup.inc.php" method="POST">
               <h1>Create Account</h1>
                              <div>
-                <input type="text" class="form-control" name="firstname" placeholder="First name" required="" />
+                             <input type="text" class="form-control" name="firstname" placeholder="First name" required="" pattern="[a-zA-Z]*" value="<?php if(isset($_GET['firstname'])){ echo htmlentities($_GET['firstname']);} ?>" />
               </div>
                 <div>
-                <input type="text" class="form-control" name="lastname" placeholder="Last name" required="" />
+                <input type="text" class="form-control" name="lastname" placeholder="Last name" required="" value="<?php if(isset($_GET['lastname'])){ echo htmlentities($_GET['lastname']);} ?>"  />
               </div>
               <div>
-                <input type="text" class="form-control" name="username" placeholder="Username" required="" />
+                <input type="text" class="form-control" name="username" placeholder="Username" required="" value="<?php if(isset($_GET['username'])){ echo htmlentities($_GET['username']);} ?>"  />
               </div>
               <div>
-                <input type="email" class="form-control" name="user-email" placeholder="Email" required="" />
+                <input type="email" class="form-control" name="user-email" placeholder="Email" required="" value="<?php if(isset($_GET['user-email'])){ echo htmlentities($_GET['user-email']);} ?>" />
               </div>
                <div>
-                <input type="text" class="form-control" name="mobilenum" placeholder="Enter mobile number" required="" />
+                <input type="text" class="form-control" name="mobilenum" placeholder="Enter mobile number" required="" value="<?php if(isset($_GET['mobilenum'])){ echo htmlentities($_GET['mobilenum']);} ?>" />
               </div><br>
               <div>
                 <input type="password" class="form-control" name="pass" placeholder="Password" required="" />

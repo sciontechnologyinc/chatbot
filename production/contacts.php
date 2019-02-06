@@ -283,24 +283,25 @@ include'include/db.php';
             // Codes for Ajax
                 $.ajax({
                   type: "GET",
-                  url: "query/addDoctor.php?a=select",
+                  url: "include/doctorsinfo.php?a=select",
                   data: {},
                     success:  function(data){
                       console.log(data);
                       var contact = JSON.parse(data);
-                      console.log(contact[0].d_fullname + 'jetro');
+                      console.log(contact[0].firstname );
                       console.log(contact.length)
                       for(x=0; x<contact.length; x++){
                       $('.displayProfile').append('<div class="col-md-4 col-sm-4 col-xs-12 profile_details">'+
                                                   '<div class="well profile_view">'+
                                                     '<div class="col-sm-12">'+
-                                                     '<h4 class="brief"><i>'+contact[x].d_specialt+'</i></h4>'+
+                                                     '<h4 class="brief"><i>'+contact[x].specialties+'</i></h4>'+
                                                       '<div class="left col-xs-7">'+
-                                                        '<h2>'+contact[x].d_fullname+'</h2>'+
-                                                        '<p><strong>About: </strong> Web Designer / UI. </p>'+
+                                                        '<h2>Dr. '+contact[x].firstname+" "+contact[x].lastname+'</h2>'+
+                                                        '<p><strong>School: </strong> '+contact[x].school+ '</p>'+
                                                         '<ul class="list-unstyled">'+
-                                                          '<li><i class="fa fa-building"></i> Address:'+contact[x].d_address+'</li>'+
-                                                          '<li><i class="fa fa-phone"></i> Phone #:'+contact[x].d_telephone+'</li>'+
+                                                          '<li><i class="fa fa-building"></i> Address:'+contact[x].address+'</li>'+
+                                                          '<li><i class="fa fa-phone"></i> Mobile #:'+contact[x].mobile+'</li>'+
+                                                          '<li><i class="fa fa-phone"></i> Phone #:'+contact[x].telephone+'</li>'+
                                                         '</ul>'+
                                                       '</div>'+
                                                       '<div class="right col-xs-5 text-center">'+

@@ -10,6 +10,8 @@ if(isset($_POST['signup-submit'])){
 	$email =$_POST['user-email'];
 	$password =$_POST['pass'];
 	$rpassword =$_POST['rpass'];
+	
+
 
 	if (empty($firstname) || empty($lastname) || empty($username) || empty($email) || empty($mobile) || empty($password) || empty($rpassword)) {
 		header("Location: ../login.php?error=emptyfieldsfirstname=".$firstname. "&lastname=". $lastname. "&username=".$username. "&user-email=".$email);
@@ -34,7 +36,7 @@ if(isset($_POST['signup-submit'])){
 		exit();
 	}
 	elseif ($password !== $rpassword) {
-	 		header("Location: ../login.php?error=passwordchecked&firstname=".$firstname. "&lastname=". $lastname."&username=".$username); 	
+	 		header("Location: ../login.php?error=passwordchecked&firstname=".$firstname. "&lastname=". $lastname."&username=".$username."&user-email=".$email."&mobilenum=".$mobile); 	
 		exit();
 	}
 	else{
@@ -50,7 +52,7 @@ if(isset($_POST['signup-submit'])){
 			mysqli_stmt_store_result($stmt);
 			$resultCheck = mysqli_stmt_num_rows($stmt);
 			if ($resultCheck > 0) {
-			header("Location: ../login.php?error=usertaken&firstname=".$firstname. "&lastname=". $lastname."&user-email=".$email); 	
+			header("Location: ../login.php?error=usertaken&firstname=".$firstname. "&lastname=". $lastname."&user-email=".$email."&mobilenum=".$mobile); 	
 		exit();
 			}
 			else {

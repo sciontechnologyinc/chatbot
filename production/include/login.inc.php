@@ -23,10 +23,17 @@ else {
 		if ($row = mysqli_fetch_assoc($result)) {
 			$pwdCheck = password_verify($mpassword, $row['pass']);
 			if ($pwdCheck == false) {
-			header("Location: ../login.php?error=wrongpassword");
+			header("Location: ../login.php?error=wrongpassword&musern=".$musername);
 			exit();
 			}
-			else if ($pwdCheck == true) {
+			else if ($row['status'] == 0) {
+				session_start();
+		$_SESSION['userId'] =  $row['user_id'];
+		$_SESSION['musern'] =  $row['user_name'];
+		header("Location: ../login.php?error=status");
+		exit();
+		}
+			else if ($pwdCheck == true && $row['status'] == 1) {
 			session_start();
 			$_SESSION['userId'] =  $row['user_id'];
 			$_SESSION['musern'] =  $row['user_name'];

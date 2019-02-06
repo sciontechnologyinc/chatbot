@@ -253,7 +253,7 @@ include'include/db.php';
                   <div class="x_content">
 
                     <p>Simple table with project listing with progress and editing options</p>
-                    <!-- Start: Jetro -->
+                    <!-- Start: -->
                     <div>
                         <div class="form-group">
                             <label for="pwd">Doctor:</label>
@@ -355,7 +355,7 @@ include'include/db.php';
                         </div>
                         <button class="btn btn-primary" id="saveSchedule">Save</button>
                     </div>
-                    <!-- End: Jetro -->
+                    <!-- End:-->
                   </div>
                 </div>
               </div>
@@ -424,7 +424,7 @@ include'include/db.php';
                 if($('#mon').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#mon').val(),
@@ -438,7 +438,7 @@ include'include/db.php';
                 }if($('#tues').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#tues').val(),
@@ -452,7 +452,7 @@ include'include/db.php';
                 }if($('#wed').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#wed').val(),
@@ -466,7 +466,7 @@ include'include/db.php';
                 }if($('#thurs').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#thurs').val(),
@@ -480,7 +480,7 @@ include'include/db.php';
                 }if($('#fri').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#fri').val(),
@@ -494,7 +494,7 @@ include'include/db.php';
                 }if($('#sat').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#sat').val(),
@@ -508,7 +508,7 @@ include'include/db.php';
                 }if($('#sun').prop('checked')){
                     $.ajax({
                         type: "POST",
-                        url: "query/addDoctor.php?a=addSchedule",
+                        url: "include/doctorsinfo.php?a=addSchedule",
                         data: {
                             iddoctor:$('#doctordropdown').val(),
                             day:$('#sun').val(),
@@ -528,12 +528,12 @@ include'include/db.php';
 
         $.ajax({
                   type: "GET",
-                  url: "query/addDoctor.php?a=select",
+                  url: "include/doctorsinfo.php?a=select",
                   data: {},
                     success:  function(data){
                       var contact = JSON.parse(data);
                       for(x=0; x<contact.length; x++){
-                          $('#doctordropdown').append('<option value="'+contact[x].d_id+'">'+contact[x].d_fullname+'</option>')  
+                          $('#doctordropdown').append('<option value="'+contact[x].id+'">'+contact[x].firstname+" "+contact[x].lastname+'</option>')  
                       }
                   }
           });
@@ -541,7 +541,7 @@ include'include/db.php';
           $('#doctordropdown').change(function(){
                 $.ajax({
                     type: "POST",
-                    url: "query/addDoctor.php?a=showSchedule",
+                    url: "include/doctorsinfo.php?a=showSchedule",
                     data: {
                         iddoctor: $('#doctordropdown').val()
                     },
