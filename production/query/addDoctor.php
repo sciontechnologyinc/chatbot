@@ -15,7 +15,7 @@ $specialties = $_POST['specialties'];
  $sql = "INSERT INTO doctors(firstname, lastname, email, address, mobile, telephone, school, specialties)
  VALUES ('$firstname', '$lastname', '$email', '$address' ,'$mobile', '$telephone', '$school', '$specialties')";
 
- mysqli_query($conn, $sql)
+ mysqli_query($conn, $sql);
     }else if ($_GET['a']=='select'){
     
     $result = $conn->query("SELECT * FROM doctors");
