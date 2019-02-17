@@ -45,4 +45,26 @@ $status = $_POST['status'];
   $sql = "UPDATE users SET archive ='1' WHERE id = '$id'";
       mysqli_query($conn, $sql);
 }
+
+else if($_GET['a']=='showData1'){
+    $result = $conn->query("SELECT * FROM users WHERE archive = 1");
+    $dbdata = array();
+       while ( $row = $result->fetch_assoc())  {
+         $dbdata[]=$row;
+  
+          
+       
+       }
+       echo json_encode($dbdata);
+}
+else if($_GET['a']=='archiveData'){
+    $id = $_POST['id'];
+    $sql = "UPDATE users SET archive ='0', status = 1 WHERE id ='$id'";
+    mysqli_query($conn, $sql);
+}
+else if ($_GET['a'] == 'deleteUser1'){
+  $id = $_POST['id'];
+  $sql = "DELETE FROM users WHERE id = '$id'";
+      mysqli_query($conn, $sql);
+}
 ?>

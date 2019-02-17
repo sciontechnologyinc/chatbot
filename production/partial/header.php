@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!(isset($_SESSION['musern']))){
+header("Location: login.php");  
+}
+?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- eta, title, CSS, favicons, etc. -->

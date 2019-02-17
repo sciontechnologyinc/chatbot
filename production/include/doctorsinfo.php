@@ -48,11 +48,31 @@ $specialties = $_POST['specialties'];
   $id = $_POST['id'];
   $sql = "UPDATE doctors SET archive ='1' WHERE id = '$id'";
       mysqli_query($conn, $sql);
-
-
-    }else if ($_GET['a']=='select'){
+    }
+    else if($_GET['a']=='showData1'){
+    $result = $conn->query("SELECT * FROM doctors WHERE archive = 1");
+    $dbdata = array();
+       while ( $row = $result->fetch_assoc())  {
+         $dbdata[]=$row;
+  
+          
+       
+       }
+       echo json_encode($dbdata);
+}
+else if($_GET['a']=='archiveData'){
+    $id = $_POST['id'];
+    $sql = "UPDATE doctors SET archive ='0' WHERE id ='$id'";
+    mysqli_query($conn, $sql);
+}
+else if ($_GET['a'] == 'deleteUser1'){
+  $id = $_POST['id'];
+  $sql = "DELETE FROM doctors WHERE id = '$id'";
+      mysqli_query($conn, $sql);
+}
+    else if ($_GET['a']=='select'){
     
-    $result = $conn->query("SELECT * FROM doctors");
+    $result = $conn->query("SELECT * FROM doctors where archive = 0");
     $dbdata = array();
     while ( $row = $result->fetch_assoc())  {
       $dbdata[]=$row;
@@ -60,7 +80,6 @@ $specialties = $_POST['specialties'];
   
    echo json_encode($dbdata);
     }
-    
     
     else if($_GET['a'] =='addSchedule'){
         $iddoctor = $_POST['iddoctor'];

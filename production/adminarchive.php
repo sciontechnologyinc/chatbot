@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include'include/db.php';
 ?>
 <!DOCTYPE html>
@@ -79,7 +79,6 @@ include'include/db.php';
             <br />
 
             <?php include('partial/sidebar.php') ?>
-
             <!-- /menu footer buttons -->
             <div class="sidebar-footer hidden-small">
           
@@ -211,7 +210,7 @@ include'include/db.php';
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Projects <small>Listing design</small></h3>
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -226,13 +225,49 @@ include'include/db.php';
               </div>
             </div>
             
+
+                  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div class="modal-body">
+                          <h4>Text in a modal</h4>
+                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
             <div class="clearfix"></div>
 
+          
+            <div class="d-flex flex-row justify-content-end ">
+   
+  </div>
+
+  <div >
+    <h2 style="color: #062f4f; font-family: 'Cormorant Unicase', serif;" class="font-weight-bold mb-4"> Admin's Records </h2>
+    <div id="records_content">  </div>
+  </div>
+  
+
+</div>
             <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Admins list</h2>
+                   <h2 class="font-weight-bold mb-4"> <i class="fa fa-archive"></i>Archive Records </h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -250,70 +285,42 @@ include'include/db.php';
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-
-                   
-
-                    <!-- start project list -->
-                    <table class="table table-striped projects">
-                      <thead>
-                        <tr>
-                          <th>id</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th style="width: 1%">Username</th>
-                          <th style="width: 20%">Email</th>
-                          <th>Mobile number</th>
+                  <div id="datatable-responsive_filter" class="dataTables_filter" ><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="datatable-responsive"></label></div>
           
-                          <th>Status</th>
-                          <th style="width: 20%">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php 
+                  <table id="datatable-responsive table" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="datatable-responsive_info" style="width: 100%;">
+       
+               
+        <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Id</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">First Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Last Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Username</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Email</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Mobile Number</th> 
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Status</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Action</th>
+       
+            </tr>
 
-                        $sql = "SELECT * FROM users";
-                        $result = mysqli_query($conn, $sql);
-                        if (mysqli_num_rows($result)>0) 
-                        {
-                        $var = 1;
-                       while ($row = mysqli_fetch_assoc($result)) {
-
-                        ?>
-                        <tr>
-                          <td><?= $var++ ?></td>
-                          <td><?=$row['user_firstn']?></td>
-                          <td><?=$row['user_lastn']?></td>
-                          <td><?=$row['user_name']?></td>
-                          <td><?=$row['user_email']?></td>
-                          <td><?=$row['user_mobile']?></td>
-                          <td><?=$row['status']?>
-                            <!--  <button type="button" class="btn btn-success btn-xs">Approve</button> --></td>
-                          <td>
-                            <a href="edit.php?id=<?=$row['user_id']?>"" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="delete.php?id=<?=$row['user_id']?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                          </td>
-                        </tr>
-                        <?php
-                        }
-                        }
-                        ?>
-                      </tbody>
                     </table>
-                    <!-- end project list -->
+             <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="datatable-responsive_info" role="status" aria-live="polite"> </div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="datatable-responsive_paginate"><ul class="pagination"><li class="paginate_button previous" id="datatable-responsive_previous"><a href="#" aria-controls="datatable-responsive" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button active"><a href="#" aria-controls="datatable-responsive" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="datatable-responsive_next"><a href="#" aria-controls="datatable-responsive" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div>
 
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+
+            <div class="clearfix"></div>
+
+
+  
+
         <!-- /page content -->
 
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+           Fe del Mundo</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -334,5 +341,73 @@ include'include/db.php';
     
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script>
+
+  //showdata
+function showTable(){
+  $.ajax({
+    type: "POST",
+    url:"include/admininfo.php?a=showData1",
+    data:{},
+    success: function(data){
+      var User = JSON.parse(data);
+      console.log(User);
+          $('.admin').empty();
+      var num = 1;
+
+      for(x=0; x<User.length; x++){
+        $('.table').append('<tr class="admin">'+
+          '<td>'+num+++'</td>'+ 
+          '<td>'+User[x].user_firstn+'</td>'+ 
+          '<td>'+User[x].user_lastn+'</td>'+ 
+          '<td>'+User[x].user_name+'</td>'+ 
+          '<td>'+User[x].user_email+'</td>'+ 
+          '<td>'+User[x].user_mobile+'</td>'+ 
+          '<td>'+(User[x].status == 1 ? 'admin' : 'approve as admin')+'</td>'+  
+          '<td><button  class="btn btn-warning btn-xs archiveData" data-toggle="modal" data-target="#update_user_modal" id="'+User[x].id+'"><i class="fa fa-archive"></i>archive</button><button class="btn btn-danger btn-xs deleteUser1" id = "'+User[x].id+'"><i class="fa fa-trash-o"></i>Delete</button></td>'+
+        '</tr>')
+      }
+    }
+  });
+}
+
+$(document).ready(function(){
+showTable();
+
+//update table
+$("body").delegate(".archiveData", "click", function(){
+    if(confirm("Are you sure you want to restore this data?")){
+  $.ajax({
+    type:"POST",
+    url:"include/admininfo.php?a=archiveData",
+    data:{
+      id:this.id
+       },
+       success: function(data){
+        location.reload();
+       }
+    });
+}
+  })
+
+$("body").delegate(".deleteUser1", "click", function(){
+  if(confirm("Are you sure you want to delete permanently this data?")){
+  $.ajax({
+    type:"POST",
+    url:"include/admininfo.php?a=deleteUser1",
+    data:{
+      id:this.id
+    },
+    success: function(data){
+      showTable();
+
+      }
+   });
+}
+});
+})
+
+</script>
+    
   </body>
 </html>

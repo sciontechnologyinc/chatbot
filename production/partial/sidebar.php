@@ -68,7 +68,8 @@
                               echo '<li><a><i class="fa fa-user-md"></i> DRs Side <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu"> 
                                <li><a href="contacts.php">Contacts</a></li>
-                      <li><a href="profile.php">Profile</a></li></ul>';
+                      <li><li><a href="doctor2.php">Doctors</a></li>
+                      <li><a href="contacts.php">Doctors Profile</a></li></ul>';
                             }
                                 else if ($rs['role'] == 1 && $rs['status'] == 1){
                                   echo '
@@ -77,7 +78,16 @@
                      <li><a href="doctor2.php">Doctors</a></li>
                      <li><a href="schedule.php">Schedule</a></li>
                       <li><a href="adminlist.php">List of admin</a></li>
-                      <li><a href="contacts.php">Doctors Profile</a></li>';
+                      <li><a href="contacts.php">Doctors Profile</a></li>
+                         </ul>
+                  </li>
+                </ul>
+                <ul class="nav side-menu">
+                        <li><a><i class="fa fa-archive"></i> Archive <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu"> 
+                      <li><a href="adminarchive.php">Admin List</a></li>
+                     <li><a href="doctorarchive.php">Doctor List</a></li>
+                ';
                                 }
                                 else {
                                   echo 'there is an error in database';
@@ -90,8 +100,7 @@
     }
 
           
-         ?>
-           
+  ?>
                     </ul>
                   </li>
                 </ul>

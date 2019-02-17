@@ -1,5 +1,4 @@
 <?php
-session_start();
 include'include/db.php';                  
 ?>
 <!DOCTYPE html>
@@ -130,7 +129,7 @@ include'include/db.php';
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="include/logout.inc.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
