@@ -1,10 +1,10 @@
 <?php
-session_start();
+include'partial/header.php';
 include'include/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('partial/header.php') ?>
+
 
   <body class="nav-md">
     <div class="container body">
@@ -131,7 +131,7 @@ include'include/db.php';
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="include/logout.inc.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -276,7 +276,7 @@ include'include/db.php';
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
+                         <li><a href="#">Settings 1</a>
                           </li>
                           <li><a href="#">Settings 2</a>
                           </li>
@@ -287,23 +287,31 @@ include'include/db.php';
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <table class="table table-bordered table-striped" id="table">
-            <tr class="bg-dark text-white">
-              <th>Id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Mobile Number</th> 
-              <th>Telephone</th>
-              <th>School Graduated</th>
-              <th>Specialties</th>
-              <th>Edit Action</th>
-              <th>Delete Action</th>
+                  <div id="datatable-responsive_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="datatable-responsive"></label></div>
+          
+                  <table id="datatable-responsive table" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="datatable-responsive_info" style="width: 100%;">
+                     <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Id</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">First Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Last Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Email</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Address</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Mobile Number</th> 
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Telephone</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">School Graduated</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Specialties</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Action</th>
+     
             </tr>
 
                     </table>
+                     <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="datatable-responsive_info" role="status" aria-live="polite">
+                                      
+                        
+                      </div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="datatable-responsive_paginate"><ul class="pagination"><li class="paginate_button previous" id="datatable-responsive_previous"><a href="#" aria-controls="datatable-responsive" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button active"><a href="#" aria-controls="datatable-responsive" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="datatable-responsive_next"><a href="#" aria-controls="datatable-responsive" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div>
+
                     <!-- end project list -->
+             
 
                   </div>
                 </div>
@@ -475,20 +483,44 @@ include'include/db.php';
             <div class="clearfix"></div>
 
 
-            <footer>
+          <footer>
           <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+           Fe del Mundo</a>
           </div>
           <div class="clearfix"></div>
         </footer>
         <!-- /footer content -->
       </div>
     </div>
+    <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <?php include('partial/footer.php') ?>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
     <script>
   //showdata
 function showTable(){
@@ -513,8 +545,8 @@ function showTable(){
           '<td>'+User[x].telephone+'</td>'+ 
           '<td>'+User[x].school+'</td>'+ 
           '<td>'+User[x].specialties+'</td>'+ 
-          '<td><button  class="btn btn-info btn-xs editUser" data-toggle="modal" data-target="#update_user_modal" id="'+User[x].id+'"><i class="fa fa-pencil"></i>Edit</button></td>'+
-        '<td> <button class="btn btn-danger btn-xs deleteUser" id = "'+User[x].id+'"><i class="fa fa-trash-o"></i>Delete</button></td>'+
+          '<td><button  class="btn btn-info btn-xs editUser" data-toggle="modal" data-target="#update_user_modal" id="'+User[x].id+'"><i class="fa fa-pencil"></i>Edit</button>'+
+        ' <button class="btn btn-danger btn-xs deleteUser" id = "'+User[x].id+'"><i class="fa fa-trash-o"></i>Delete</button></td>'+
         '</tr>')
       }
     }

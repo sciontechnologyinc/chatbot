@@ -1,7 +1,9 @@
 <?php
 session_start();
 include'include/db.php';
-
+if (!(isset($_SESSION['musern']))){
+header("Location: login.php");  
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

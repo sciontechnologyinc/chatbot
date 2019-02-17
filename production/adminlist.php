@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include'include/db.php';
 ?>
 <!DOCTYPE html>
@@ -131,7 +131,7 @@ include'include/db.php';
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="include/logout.inc.php"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -285,20 +285,27 @@ include'include/db.php';
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <table class="table table-bordered table-striped" id="table">
-            <tr class="bg-dark text-white">
-              <th>Id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
-              <th>Email</th>
-              <th>Mobile Number</th> 
-              <th>Status</th>
-              <th>Edit Action</th>
-              <th>Delete Action</th>
+                  <div id="datatable-responsive_filter" class="dataTables_filter" ><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="datatable-responsive"></label></div>
+          
+                  <table id="datatable-responsive table" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed" cellspacing="0" width="100%" role="grid" aria-describedby="datatable-responsive_info" style="width: 100%;">
+       
+               
+        <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Id</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">First Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Last Name</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Username</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Email</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Mobile Number</th> 
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Status</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="datatable-responsive" rowspan="1" colspan="1" style="width: 68px;" aria-sort="ascending" aria-label="First name: activate to sort column descending">Action</th>
+       
             </tr>
 
                     </table>
+                    <div class="row"><div class="col-sm-5"><div class="dataTables_info" id="datatable-responsive_info" role="status" aria-live="polite"></div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="datatable-responsive_paginate"><ul class="pagination"><li class="paginate_button previous" id="datatable-responsive_previous"><a href="#" aria-controls="datatable-responsive" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button active"><a href="#" aria-controls="datatable-responsive" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="datatable-responsive" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="datatable-responsive_next"><a href="#" aria-controls="datatable-responsive" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div>
+
+                    
                     <!-- end project list -->
 
                   </div>
@@ -470,8 +477,8 @@ function showTable(){
           '<td>'+User[x].user_email+'</td>'+ 
           '<td>'+User[x].user_mobile+'</td>'+ 
           '<td>'+(User[x].status == 1 ? 'admin' : 'approve as admin')+'</td>'+  
-          '<td><button  class="btn btn-info btn-xs editUser" data-toggle="modal" data-target="#update_user_modal" id="'+User[x].id+'"><i class="fa fa-pencil"></i>Edit</button></td>'+
-        '<td> <button class="btn btn-danger btn-xs deleteUser" id = "'+User[x].id+'"><i class="fa fa-trash-o"></i>Delete</button></td>'+
+          '<td><button  class="btn btn-info btn-xs editUser" data-toggle="modal" data-target="#update_user_modal" id="'+User[x].id+'"><i class="fa fa-pencil"></i>Edit</button>'+
+          ' <button class="btn btn-danger btn-xs deleteUser" id = "'+User[x].id+'"><i class="fa fa-trash-o"></i>Delete</button></td>'+
         '</tr>')
       }
     }
