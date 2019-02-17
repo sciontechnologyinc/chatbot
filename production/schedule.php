@@ -531,9 +531,9 @@ include'include/db.php';
                   url: "include/doctorsinfo.php?a=select",
                   data: {},
                     success:  function(data){
-                      var contact = JSON.parse(data);
-                      for(x=0; x<contact.length; x++){
-                          $('#doctordropdown').append('<option value="'+contact[x].id+'">'+contact[x].firstname+" "+contact[x].lastname+'</option>')  
+                      var doctor = JSON.parse(data);
+                      for(x=0; x<doctor.length; x++){
+                          $('#doctordropdown').append('<option value="'+doctor[x].id+'">'+doctor[x].firstname+" "+doctor[x].lastname+'</option>')  
                       }
                   }
           });

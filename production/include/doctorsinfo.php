@@ -22,6 +22,7 @@ $specialties = $_POST['specialties'];
          $dbdata[]=$row;
        }
        echo json_encode($dbdata);
+       
 }else if($_GET['a']=='editData'){
     $id = $_POST['id'];
     
@@ -52,7 +53,7 @@ $specialties = $_POST['specialties'];
 
     }else if ($_GET['a']=='select'){
     
-    $result = $conn->query("SELECT * FROM doctors");
+    $result = $conn->query("SELECT * FROM doctors WHERE archive = '0'");
     $dbdata = array();
     while ( $row = $result->fetch_assoc())  {
       $dbdata[]=$row;
