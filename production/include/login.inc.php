@@ -37,6 +37,7 @@ else {
 			session_start();
 			$_SESSION['userId'] =  $row['user_id'];
 			$_SESSION['musern'] =  $row['user_name'];
+			
 			header("Location: ../index.php?login=success");
 		}
 		}
